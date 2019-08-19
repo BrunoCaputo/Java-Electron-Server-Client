@@ -1,0 +1,32 @@
+<head>
+  <title>Node Client</title>
+  <h1 align="center">Electron</h1>
+</head>
+
+<body>
+  <div>
+    <input placeholder="Digite algo aqui!" />
+    <button>Send</button>
+  </div>
+  <div>
+    <p>Server:</p>
+  </div>
+  <script>
+    const electron = require("electron");
+    const { ipcRenderer } = electron;
+
+    var btn = document.querySelector("button");
+    var tf = document.querySelector("input");
+    var parag = document.querySelector("p");
+
+    btn.addEventListener("click", event => {
+      ipcRenderer.send("socket:send", tf.value);
+      tf.value = "";
+      tf.focus();
+    });
+
+    ipcRenderer.on("received:data", (event, data) => {
+      parag.innerHTML = "Server: " + data;
+    });
+  </script>
+</body>
