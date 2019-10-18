@@ -37,6 +37,7 @@ public class SocketServer {
             if (data.equals("Desconectado")) {
                 end();
                 data = null;
+                test.setOpenBtnEnabled(true);
             }
         }
     }

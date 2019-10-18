@@ -6,7 +6,6 @@ import java.io.IOException;
 public class ButtonsControl {
 
     private Test test;
-    private Process p;
 
     public ButtonsControl(Test test) {
         this.test = test;
@@ -16,8 +15,7 @@ public class ButtonsControl {
         File dir = new File("./Electron");
         String cmd = "npm run electron";
         try {
-            p = Runtime.getRuntime().exec(cmd, null, dir);
-            System.out.println(p);
+            Runtime.getRuntime().exec(cmd, null, dir);
         } catch (IOException ex) {
         }
     }
@@ -38,7 +36,7 @@ public class ButtonsControl {
         File dir = new File("./Electron");
         String cmd = "npm run stop";
         try {
-            p = Runtime.getRuntime().exec(cmd, null, dir);
+            Runtime.getRuntime().exec(cmd, null, dir);
             if (app != null) {
                 app.end();
             }

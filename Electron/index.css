@@ -1,0 +1,58 @@
+.jumbotron {
+  background-color: transparent;
+}
+
+input {
+  width: 60%;
+  height: 34px;
+}
+
+#servMsg {
+  margin-top: 3%;
+}
+
+p#name {
+  margin: 0px 0px 6px;
+  font-size: 20px;
+}
+
+p#age {
+  margin: 0px 0px 6px;
+  font-size: 20px;
+}
+
+p#number {
+  margin: 0px 0px 6px;
+  font-size: 20px;
+}
+
+.btn:active,
+.btn:focus {
+  outline-style: none !important;
+}
+
+#accept {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#decline {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.glyphicon {
+  position: relative;
+  top: 3px;
+  left: 0px;
+  font-size: 20px;
+}
+
+#decIcon {
+  top: 2px;
+  left: -0.2px;
+}

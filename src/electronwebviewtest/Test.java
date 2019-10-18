@@ -31,6 +31,8 @@ public class Test extends javax.swing.JFrame {
     private void frameInitialization() {
         initComponents();
         buttonsControl = new ButtonsControl(this);
+
+        this.getRootPane().setDefaultButton(btnSend);
     }
 
     private void createServer() throws IOException {
@@ -122,7 +124,7 @@ public class Test extends javax.swing.JFrame {
                         .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backPanelLayout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
+                .addGap(0, 27, Short.MAX_VALUE)
                 .addComponent(messageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -139,18 +141,18 @@ public class Test extends javax.swing.JFrame {
                 .addComponent(messageLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(close)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(backPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(backPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(backPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -166,6 +168,7 @@ public class Test extends javax.swing.JFrame {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                setOpenBtnEnabled(false);
                 buttonsControl.openElectron();
                 buttonsControl.socketListen(app);
             }
@@ -182,7 +185,7 @@ public class Test extends javax.swing.JFrame {
             tfMessage.requestFocus();
         } else {
             System.out.println("Socket null");
-            this.setMessageLblText("Não há conexões"); 
+            this.setMessageLblText("Não há conexões");
             tfMessage.setText("");
             tfMessage.requestFocus();
         }
@@ -200,8 +203,12 @@ public class Test extends javax.swing.JFrame {
     private javax.swing.JButton openBtn;
     private javax.swing.JTextField tfMessage;
     // End of variables declaration//GEN-END:variables
-   
+
     public void setMessageLblText(String message) {
         messageLbl.setText(message);
+    }
+    
+    public void setOpenBtnEnabled(boolean enable) {
+        openBtn.setEnabled(enable);
     }
 }
